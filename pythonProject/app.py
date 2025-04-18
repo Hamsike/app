@@ -9,7 +9,6 @@ from calculator import TfIdfCalculator
 UPLOAD_FOLDER = './uploads'
 ALLOWED_EXTENSIONS = {'txt'}
 
-# Создаем экземпляр класса калькулятора TF-IDF
 calculator = TfIdfCalculator()
 
 def allowed_file(filename):
@@ -18,7 +17,7 @@ def allowed_file(filename):
 
 app = Flask(__name__)
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
-app.secret_key = 'super secret key'  # Нужен для flash сообщений
+app.secret_key = 'super secret key'
 
 @app.route('/', methods=['GET', 'POST'])
 def upload_file():
