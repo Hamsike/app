@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>TF-IDF Calculator</title>
+</head>
+<body>
+    <h1>Upload a Text File to Calculate TF-IDF</h1>
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            <ul class=flash>
+            {% for message in messages %}
+                <li>{{ message }}</li>
+            {% endfor %}
+            </ul>
+        {% endif %}
+    {% endwith %}
+    <form method="post" enctype="multipart/form-data">
+        <input type="file" name="file"><br><br>
+        <button type="submit">Calculate TF-IDF</button>
+    </form>
+    {% if data %}
+        <table border="1">
+            <tr>
+                <th>Word</th>
+                <th>TF</th>
+                <th>IDF</th>
+            </tr>
+            {% for row in data %}
+                <tr>
+                    <td>{{ row.word }}</td>
+                    <td>{{ row.tf }}</td>
+                    <td>{{ row.idf }}</td>
+                </tr>
+            {% endfor %}
+        </table>
+    {% endif %}
+</body>
+</html>
